@@ -1,0 +1,18 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap");
+
+:root {
+  --bg-primary: #845ec2;
+  --bg-secondary: #faf7ff;
+  --bg-success: #5c249b;
+
+  --color-primary: #e3e0f3;
+  --color-secondary: #3b3b3b;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}

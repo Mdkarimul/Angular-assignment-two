@@ -1,0 +1,102 @@
+<div class="container border my-4 rounded-2 p-5">
+  <h1 class="fs-5 my-4">Angular crud app</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <!--table start to show data in tabular form -->
+       <table class="table table-borderless">
+        <thead>
+          <tr class="table-active">
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">username</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  class="border p-5" *ngFor="let data of show_data;let i=index;trackBy: trackByItems">
+             <td>{{i+1}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.username}}</td>
+            <td>{{data.mobile}}</td> 
+            <td class="d-flex justify-content-around"><i (click)="editTask(data._id)" style="cursor: pointer;" class="fas fa-edit me-2"></i><i (click)="deleteTask(data._id)" style="cursor: pointer;" class="fa-solid fa-trash"></i></td>
+          </tr>
+        </tbody>
+      </table> 
+      <div class="alert alert-danger" *ngIf="errorMessage">{{errorMessage}}</div>  
+    </div>
+  
+    <div class="col-md-6 bg-info rounded-3 px-4 py-2">
+      <h5 class="my-2 fs-6">Add new data</h5>
+      <form [formGroup]="crudForm" (ngSubmit)="saveData()">
+        <div class="mb-3 my-4">
+          <input
+            type="name"
+            formControlName="name"
+            class="form-control"
+            id="name"
+            placeholder="name"
+          />
+          <div
+            class=""
+            *ngIf="name?.invalid && (name?.dirty || name?.touched)"
+            class="alert alert-danger border my-2"
+          >
+            <span *ngIf="name?.errors?.['required']"> Name is required. </span>
+            <span *ngIf="name?.errors?.['minlength']">
+              Name must be at least 4 characters long.
+            </span>
+          </div>
+        </div>
+        <div class="mb-3 my-4">
+          <input
+            type="username"
+            class="form-control"
+            formControlName="username"
+            id="username"
+            placeholder="username"
+          />
+          <div
+            class=""
+            *ngIf="username?.invalid && (username?.dirty || username?.touched)"
+            class="alert alert-danger border my-2"
+          >
+            <span *ngIf="username?.errors?.['required']">
+              username is required.
+            </span>
+            <span *ngIf="username?.errors?.['email']"> Enter your email. </span>
+          </div>
+        </div>
+        <div class="mb-3 my-4">
+          <input
+            type="text"
+            class="form-control"
+            id="username"
+            formControlName="mobile"
+            placeholder="mobile"
+          />
+          <div
+            class=""
+            *ngIf="mobile?.invalid && (mobile?.dirty || mobile?.touched)"
+            class="alert alert-danger border my-2"
+          >
+            <span *ngIf="mobile?.errors?.['required']">
+              username is required.
+            </span>
+            <span *ngIf="mobile?.errors?.['maxlength']">
+              Enter 10 digits mobile number.
+            </span>
+            <span *ngIf="mobile?.errors?.['minlength']">
+              Enter 10 digits mobile number.
+            </span>
+          </div>
+        </div>
+
+        <button class="btn btn-success my-4" type="submit">Submit now</button>
+      </form>
+    </div>
+  </div>
+  <ng-toast  [style]="{width:'300px',padding:'15px'}"></ng-toast>
+</div>
+
+
