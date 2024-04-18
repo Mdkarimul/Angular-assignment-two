@@ -12,12 +12,12 @@
 #### install dependencies
  1   $   npm install
 
- 2  Replace mongodb database connection string in app.module.ts
+ 2  Replace mongodb database connection string in app.module.ts file
 ```
 MongooseModule.forRoot(`mongodb+srv://Md7861942:<password>@crud.xpqm72v.mongodb.net/?retryWrites=true&w=majority&appName=Crud`,{
     }),
 ```
-#### Run in dev mode
+##### Run in dev mode
 
  3  $  npm run start:dev
 
@@ -26,10 +26,12 @@ MongooseModule.forRoot(`mongodb+srv://Md7861942:<password>@crud.xpqm72v.mongodb.
 ---
 
  ### Front-end setup
+ 
  #### install dependencies
 1  $ npm install 
 
-3  $ ng serve --o 
+##### Run in localhost
+2  $ ng serve --o 
 
 
 ---
